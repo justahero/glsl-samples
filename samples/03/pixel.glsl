@@ -23,9 +23,31 @@ float drawRect(vec2 st, float width) {
   return bl.x * bl.y * tr.x * tr.y;
 }
 
-float test(vec2 st, vec2 left, float width) {
-  float bl = step(0.3, st.x - 0.3) + step(0.4, 1.0 - st.x - 0.4) + step(width, 1.0 - st.y);
-  return bl;
+float test(vec2 st) {
+  float left   = 1.0;
+  float right  = 1.0;
+  float top    = 1.0;
+  float bottom = 1.0;
+
+  if (0.2 <= st.y && st.y <= 0.7) {
+    if (0.2 <= st.x && st.x <= 0.3) {
+      left = 0.0;
+    }
+    if (0.6 <= st.x && st.x <= 0.7) {
+      right = 0.0;
+    }
+  }
+
+  if (0.2 <= st.x && st.x <= 0.7) {
+    if (0.2 <= st.y && st.y <= 0.3) {
+      top = 0.0;
+    }
+    if (0.6 <= st.y && st.y <= 0.7) {
+      bottom = 0.0;
+    }
+  }
+
+  return (left * top) * (right * bottom);
 }
 
 void main() {
@@ -33,7 +55,7 @@ void main() {
 
   // float pct = drawRect(st, 0.01);
 
-  float pct = test(1.0 - st, vec2(0.3, 0.4), 0.05);
+  float pct = test(st);
   vec3 color = vec3(pct);
 
   gl_FragColor = vec4(color, 1.0);
