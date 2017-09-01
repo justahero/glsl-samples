@@ -15,21 +15,13 @@ float drawRect(vec2 st, float left, float top, float right, float bottom, float 
   float b = 1.0;
 
   if (top <= st.y && st.y <= bottom) {
-    if (left <= st.x && st.x <= left + width) {
-      l = 0.0;
-    }
-    if (right - width <= st.x && st.x <= right) {
-      r = 0.0;
-    }
+    l = step(st.x, left) + step(left, st.x - width);
+    r = step(st.x, right - width) + step(right, st.x);
   }
 
   if (left <= st.x && st.x <= right) {
-    if (top - width <= st.y && st.y <= top) {
-      t = 0.0;
-    }
-    if (bottom - width <= st.y && st.y <= bottom) {
-      b = 0.0;
-    }
+    t = step(st.y, top - width) + step(top, st.y);
+    b = step(st.y, bottom - width) + step(bottom, st.y);
   }
 
   return (l * t) * (r * b);
