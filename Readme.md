@@ -5,3 +5,4 @@ A list of GLSL samples done with WebGL and [glsl-canvas](https://github.com/patr
 * [01](https://justahero.github.io/book-of-shaders/samples/01/index.html)
 * [02](https://justahero.github.io/book-of-shaders/samples/02/index.html)
 * [03](https://justahero.github.io/book-of-shaders/samples/03/index.html)
+* [04](https://justahero.github.io/book-of-shaders/samples/04/index.html)
