@@ -18,7 +18,8 @@ void main() {
   vec2 st = gl_FragCoord.xy / u_resolution;
 
   float pct = 0.0;
-  pct = circle(st, vec2(0.7, 0.7), 0.25, 0.03) + circle(st, vec2(0.18), 0.15, 0.015);
+  pct  = circle(st, vec2(0.75 + 0.1 * sin(u_time), 0.75 + 0.1 * sin(u_time * 2.0)), 0.5, 0.025);
+  pct += circle(st, vec2(0.25 + 0.1 * cos(u_time), 0.25 + 0.1 * sin(u_time * 2.0)), 0.4, 0.05);
 
   vec3 color = vec3(1.0 - pct, 0.0, 0.0);
 
