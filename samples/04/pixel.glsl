@@ -9,9 +9,7 @@ uniform vec2 u_mouse;
 uniform float u_time;
 
 float circle(vec2 size, vec2 pos, float radius, float smooth) {
-  float hello = radius - 0.02 * sin(u_time * 2.5);
-  float pct = smoothstep(radius, length(pos - size), radius + smooth * sin(u_time * 2.5));
-  return pct;
+  return smoothstep(radius, length(pos - size), radius + smooth * sin(u_time * 2.5));
 }
 
 void main() {
