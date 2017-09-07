@@ -16,9 +16,6 @@ void main() {
   vec3 color = vec3(0.15, 0.28, 0.65) * (1.0 - st.x);
   float gamma = 1.0 + 0.4 * ceil(12.0 * st.y);
 
-  //  color = pow(color, vec3(1.0 / gamma));
-
-
   // float gamma = 1.1;
   color = pow(clamp(color, 0.0, 1.0), vec3(1.0 / gamma));
 
