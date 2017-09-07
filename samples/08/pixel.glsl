@@ -10,9 +10,9 @@ uniform vec2 u_mouse;
 uniform float u_time;
 
 float distance(vec2 st, int sides) {
-  float a = 2.5 * atan(-0.3 /  st.x, 1.0 - st.y) + PI * 2.0;
+  float a = atan((2.0 - sin(u_time)) * st.x, st.y / st.x) + PI;
   float r = TWO_PI / float(sides);
-  return cos(floor(0.5 + a / r) * r - a) * length(st);
+  return cos(floor(0.5 + a / r) * r - a) * length(st) + 0.1;
 }
 
 void main(){
