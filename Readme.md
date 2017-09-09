@@ -13,6 +13,10 @@ A list of GLSL samples done with WebGL and [glsl-canvas](https://github.com/patr
 * [07](https://justahero.github.io/book-of-shaders/samples/07/index.html)
 * [08](https://justahero.github.io/book-of-shaders/samples/08/index.html)
 
+## Patterns
+
+* [ß1](https://justahero.github.io/book-of-shaders/samples/patterns/01/index.html)
+
 ## Post Effects
 
 * [gamma](https://justahero.github.io/book-of-shaders/samples/gamma/index.html)
