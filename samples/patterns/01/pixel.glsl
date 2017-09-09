@@ -33,7 +33,9 @@ mat2 rotate(float angle) {
 void main() {
   vec2 st = gl_FragCoord.xy / u_resolution;
 
-  st = tile(st, vec2(6.0, 6.0));
+  vec2 zoom = vec2(6.0, 6.0);
+
+  st = tile(st, zoom);
   st = rotate(st, u_time * PI * 0.125);
 
   vec2 pos = st - 0.5;
