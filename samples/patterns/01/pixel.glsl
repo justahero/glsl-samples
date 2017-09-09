@@ -39,17 +39,19 @@ void main() {
 
   vec2 zoom = vec2(6.0, 6.0);
 
-  vec2 pos = tile(st, zoom);
+  vec2 pos  = tile(st, zoom);
   vec2 grid = grid(st, zoom);
 
   pos = rotate(pos, u_time * PI * 0.1 * (grid.x + 1.0 + grid.y) / 4.0);
   pos = pos - 0.5;
 
   float l = length(pos);
-  float f = gear(pos, 14.0, 0.72);
+  float f = gear(pos, 14.0 + grid.x, 0.72);
 
   float d = smoothstep(f, f + 0.02, l * 2.2);
-  vec3 color = vec3(1.2 - d);
+
+  float t = (st.x + st.y) / 2.0;
+  vec3 color = vec3(t / 2.0, (1.0 - d) - t / 4.0, pow(t, 1.2));
 
   gl_FragColor = vec4(color, 1.0);
 }
