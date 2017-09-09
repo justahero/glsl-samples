@@ -20,6 +20,10 @@ vec2 tile(in vec2 st, in vec2 zoom) {
   return fract(st * zoom);
 }
 
+vec2 grid(in vec2 st, in vec2 zoom) {
+  return floor(st * zoom);
+}
+
 float gear(vec2 pos, float bumps, float radius) {
   float a = atan(pos.y, pos.x);
   return smoothstep(-0.50, 1.0, 1.2 * cos(a * bumps)) * (radius * 0.25) + radius;
@@ -35,15 +39,17 @@ void main() {
 
   vec2 zoom = vec2(6.0, 6.0);
 
-  st = tile(st, zoom);
-  st = rotate(st, u_time * PI * 0.125);
+  vec2 pos = tile(st, zoom);
+  vec2 grid = grid(st, zoom);
 
-  vec2 pos = st - 0.5;
+  pos = rotate(pos, u_time * PI * 0.1 * (grid.x + 1.0 + grid.y) / 4.0);
+  pos = pos - 0.5;
 
   float l = length(pos);
   float f = gear(pos, 14.0, 0.72);
 
-  vec3 color = vec3(1.0 - smoothstep(f, f + 0.02, l * 2.2));
+  float d = smoothstep(f, f + 0.02, l * 2.2);
+  vec3 color = vec3(1.2 - d);
 
   gl_FragColor = vec4(color, 1.0);
 }
