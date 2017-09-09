@@ -29,11 +29,6 @@ float gear(vec2 pos, float bumps, float radius) {
   return smoothstep(-0.50, 1.0, 1.2 * cos(a * bumps)) * (radius * 0.25) + radius;
 }
 
-mat2 rotate(float angle) {
-  return mat2(cos(angle), -sin(angle),
-              sin(angle),  cos(angle));
-}
-
 void main() {
   vec2 st = gl_FragCoord.xy / u_resolution;
 
