@@ -20,6 +20,10 @@ float opIntersect(float d1, float d2) {
   return min(d1, d2);
 }
 
+vec2 opRepetition(vec2 p, vec2 c) {
+  return mod(p, c) - 0.5 * c;
+}
+
 vec2 rotate(in vec2 st, in float angle) {
   vec2 result = st - 0.5;
   result = mat2(cos(angle), -sin(angle),
@@ -36,27 +40,21 @@ vec2 grid(in vec2 st, in vec2 zoom) {
   return floor(st * zoom);
 }
 
-float circle(in vec2 st, in vec2 pos, float radius) {
-  vec2 dist = st - pos;
+float circle(in vec2 st, float radius) {
+  vec2 dist = st - vec2(0.5);
   return 1.0 - smoothstep(radius - (radius * 0.01),
                           radius + (radius * 0.01),
                           dot(dist, dist) * 4.0);
 }
 
-float rings(in vec2 st, in vec2 offset, float radius) {
-  return circle(st, offset, radius);
-}
-
 void main() {
   vec2 st = gl_FragCoord.xy / u_resolution;
 
-  vec2 zoom = vec2(6.0);
-  st = tile(st, zoom);
-  // st = rotate(st, PI * 0.25);
+  st = st * vec2(12.0);
 
-  float d;
-  d = rings(st, vec2(0.4), 0.4);
-  d = opUnion(d, rings(st, vec2(0.6), 0.4));
+  float d = 0.0;
+  d = circle(opRepetition(st + vec2(2.5), vec2(4.0, 4.0)), 2.0);
+  d = opUnion(d, circle(opRepetition(st + vec2(0.5), vec2(4.0, 4.0)), 2.0));
 
   vec3 color = vec3(d);
 
