@@ -47,14 +47,20 @@ float circle(in vec2 st, float radius) {
                           dot(st, st) * 4.0);
 }
 
+float ring(in vec2 st, float radius, float inner) {
+  float d1 = circle(st, radius);
+  float d2 = circle(st, radius - inner);
+  return opSubtract(d1, d2);
+}
+
 void main() {
   vec2 st = gl_FragCoord.xy / u_resolution;
 
   st = st * vec2(12.0);
 
   float d = 0.0;
-  d = circle(opRepetition(st + vec2(2.0), vec2(4.0)), 2.5);
-  d = opUnion(d, circle(opRepetition(st + vec2(0.0), vec2(4.0)), 2.5));
+  d = ring(opRepetition(st + vec2(2.5, 2.0), vec2(5.0, 4.0)), 2.5, 0.1);
+  d = opUnion(d, ring(opRepetition(st + vec2(0.0), vec2(5.0, 4.0)), 2.5, 0.1));
 
   d = opUnion(d, circle(opRepetition(st + vec2(0.75), vec2(1.5)), 0.25));
   d = opUnion(d, circle(opRepetition(st + vec2(1.50), vec2(1.5)), 0.25));
