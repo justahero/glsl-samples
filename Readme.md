@@ -25,6 +25,7 @@ A list of GLSL samples done with WebGL and [glsl-canvas](https://github.com/patr
 ## Random
 
 * [01](https://justahero.github.io/book-of-shaders/samples/random/01/index.html)
+* [02](https://justahero.github.io/book-of-shaders/samples/random/02/index.html)
 
 ## Post Effects
 
