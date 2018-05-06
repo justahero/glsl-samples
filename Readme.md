@@ -1,4 +1,4 @@
-# Book of Shaders Samples
+# GLSL samples
 
 A list of GLSL samples done with WebGL and [glsl-canvas](https://github.com/patriciogonzalezvivo/glslCanvas)
 
