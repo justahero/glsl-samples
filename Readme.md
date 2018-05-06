@@ -29,4 +29,5 @@ A list of GLSL samples done with WebGL and [glsl-canvas](https://github.com/patr
 
 ## Post Effects
 
-* [gamma](https://justahero.github.io/book-of-shaders/samples/gamma/index.html)
+* [gamma](https://justahero.github.io/book-of-shaders/samples/post/gamma/index.html)
+* [vignette](https://justahero.github.io/book-of-shaders/samples/post/vignette/index.html)
